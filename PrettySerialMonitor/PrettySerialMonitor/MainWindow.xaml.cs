@@ -165,13 +165,15 @@ namespace PrettySerialMonitor
                     }
                     else
                     {
-                        terminal.BaudRate = baudRate;
-                        terminal.PortName = ComboBoxComPortSelectorTerminal.Text;
                         try
                         {
+
+                            terminal.BaudRate = baudRate;
+                            terminal.PortName = ComboBoxComPortSelectorTerminal.Text;
+                
                           
                             terminal.Open();
-                            StateTextBlockTerminal.Text = "Connected";
+                            StateTextBlockTerminal.Text = "Connected \n" + terminal.PortName;
                             ConnectButtonTerminal.Content = "Disconnect";
 
                             terminal.DataReceived += new SerialDataReceivedEventHandler(TerminalDataReceived);
@@ -185,6 +187,19 @@ namespace PrettySerialMonitor
                         {
                             StateTextBlockTerminal.Text = e.Message;
                         }
+                        catch(System.IO.IOException)
+                        {
+                            StateTextBlockTerminal.Text = "Port not available";
+                        }
+                        catch(ArgumentNullException)
+                        {
+                            StateTextBlockTerminal.Text = "Choose a port";
+                        }
+                        catch (ArgumentException)
+                        {
+                            StateTextBlockTerminal.Text = "Choose a port";
+                        }
+
                     }
                 }
                 else
