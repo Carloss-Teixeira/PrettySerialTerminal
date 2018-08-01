@@ -1,0 +1,15 @@
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\PrettySerialMonitor.exe.config
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\PrettySerialMonitor.exe
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\PrettySerialMonitor.pdb
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.csprojAssemblyReference.cache
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\MainWindow.g.cs
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\App.g.cs
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor_MarkupCompile.cache
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor_MarkupCompile.lref
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\MainWindow.baml
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.g.resources
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.Properties.Resources.resources
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.csproj.GenerateResource.cache
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.csproj.CoreCompileInputs.cache
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.exe
+c:\users\carlos\source\repos\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.pdb

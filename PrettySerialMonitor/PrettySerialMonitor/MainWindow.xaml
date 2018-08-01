@@ -1,0 +1,98 @@
+﻿<Window x:Class="PrettySerialMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrettySerialMonitor"
+        mc:Ignorable="d"
+        Title="Pretty Serial Monitor" Height="500" Width="1000"
+        
+          >
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF303030" Offset="0"/>
+            <GradientStop Color="#FF363232" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
+    <Grid Margin="268,44,-192,-45">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="180*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="287" Margin="244,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="152" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" Margin="244,26,0,0" VerticalAlignment="Top" Width="152" x:Name="ComboBoxComPortSelectorTerminal3" Grid.Row="2" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF494949" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="287" Margin="87,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="152" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" Margin="87,26,0,0" VerticalAlignment="Top" Width="152" x:Name="ComboBoxComPortSelectorTerminal2" Grid.Row="2" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF494949" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="287" Margin="401,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="152" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" Margin="401,26,0,0" VerticalAlignment="Top" Width="152" x:Name="ComboBoxComPortSelectorTerminal4" Grid.Row="2" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF494949" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="287" Margin="558,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="152" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" Margin="558,26,0,0" VerticalAlignment="Top" Width="152" x:Name="ComboBoxComPortSelectorTerminal5" Grid.Row="2" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF494949" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="287" Margin="-70,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="152" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" Margin="-70,26,0,0" VerticalAlignment="Top" Width="152" x:Name="ComboBoxComPortSelectorTerminal1" Grid.Row="2" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF494949" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+
+        </ComboBox>
+        <Button Name="ConnectButtonTerminal1" Click="ConnectButtonTerminal_Click" Content="Connect" HorizontalAlignment="Left" Margin="-70,55,0,0" VerticalAlignment="Top" Width="152" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button Name="ConnectButtonTerminal2" Click="ConnectButtonTerminal_Click" Content="Connect" HorizontalAlignment="Left" Margin="87,55,0,0" VerticalAlignment="Top" Width="152" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button Name="ConnectButtonTerminal3" Click="ConnectButtonTerminal_Click" Content="Connect" HorizontalAlignment="Left" Margin="244,55,0,0" VerticalAlignment="Top" Width="152" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button Name="ConnectButtonTerminal4" Click="ConnectButtonTerminal_Click" Content="Connect" HorizontalAlignment="Left" Margin="401,55,0,0" VerticalAlignment="Top" Width="152" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button Name="ConnectButtonTerminal5" Click="ConnectButtonTerminal_Click" Content="Connect" HorizontalAlignment="Left" Margin="558,55,0,0" VerticalAlignment="Top" Width="152" Grid.Row="2" Grid.RowSpan="2"/>
+
+        <TextBox PreviewKeyDown="TextBoxTerminal_KeyEvent" Name="TextBoxTerminal1"  HorizontalAlignment="Left" Margin="-70,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="287" Width="152" Grid.Row="3"/>
+        <TextBox PreviewKeyDown="TextBoxTerminal_KeyEvent" Name="TextBoxTerminal2" HorizontalAlignment="Left" Margin="87,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="287" Width="152" Grid.Row="3"/>
+        <TextBox PreviewKeyDown="TextBoxTerminal_KeyEvent" Name="TextBoxTerminal3" HorizontalAlignment="Left" Margin="244,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="287" Width="152" Grid.Row="3"/>
+        <TextBox PreviewKeyDown="TextBoxTerminal_KeyEvent" Name="TextBoxTerminal4" HorizontalAlignment="Left" Margin="401,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="287" Width="152" Grid.Row="3"/>
+        <TextBox PreviewKeyDown="TextBoxTerminal_KeyEvent" Name="TextBoxTerminal5" HorizontalAlignment="Left" Margin="558,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="287" Width="152" Grid.Row="3"/>
+
+        <ComboBox   Name="ComboBoxBaudRateTerminal1" IsEditable="True" HorizontalAlignment="Left" Margin="-70,19,0,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Grid.RowSpan="2"/>
+        <ComboBox   Name="ComboBoxBaudRateTerminal2" IsEditable="True" HorizontalAlignment="Left" Margin="87,19,0,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Grid.RowSpan="2"/>
+        <ComboBox   Name="ComboBoxBaudRateTerminal3" IsEditable="True" HorizontalAlignment="Left" Margin="244,19,0,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Grid.RowSpan="2"/>
+        <ComboBox   Name="ComboBoxBaudRateTerminal4" IsEditable="True" HorizontalAlignment="Left" Margin="401,19,0,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Grid.RowSpan="2"/>
+        <ComboBox   Name="ComboBoxBaudRateTerminal5" IsEditable="True" HorizontalAlignment="Left" Margin="558,19,0,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Grid.RowSpan="2"/>
+
+        <TextBlock  Name="StateTextBlockTerminal1" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="-70,-40,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="35" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
+        <TextBlock  Name="StateTextBlockTerminal2" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="87,-40,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="35" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
+        <TextBlock  Name="StateTextBlockTerminal3" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="244,-40,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="35" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
+        <TextBlock  Name="StateTextBlockTerminal4"  Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="401,-40,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="35" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
+        <TextBlock  Name="StateTextBlockTerminal5" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="558,-40,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="35" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
+
+    </Grid>
+</Window>
