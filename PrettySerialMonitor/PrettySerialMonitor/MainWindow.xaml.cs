@@ -26,324 +26,337 @@ namespace PrettySerialMonitor
 
     public partial class MainWindow : Window
     {
-        SerialPort terminal1;
-        SerialPort terminal2;
-        SerialPort terminal3;
-        SerialPort terminal4;
-        SerialPort terminal5;
 
-     
+
+
+        List<SerialTerminal> terminals;
+
+
 
         public MainWindow()
         {
             
-
+            
 
             InitializeComponent();
+            terminals = new List<SerialTerminal>(6);
 
-            string[] portsList = SerialPort.GetPortNames();
+            TextBoxTerminal1.Visibility = Visibility.Hidden;
+            TextBoxTerminal2.Visibility = Visibility.Hidden;
+            TextBoxTerminal3.Visibility = Visibility.Hidden;
+            TextBoxTerminal4.Visibility = Visibility.Hidden;
+            TextBoxTerminal5.Visibility = Visibility.Hidden;
+            TextBoxTerminal6.Visibility = Visibility.Hidden;
 
-            foreach (string port in portsList)
-            {
-                ComboBoxComPortSelectorTerminal1.Items.Add(port);
-                ComboBoxComPortSelectorTerminal2.Items.Add(port);
-                ComboBoxComPortSelectorTerminal3.Items.Add(port);
-                ComboBoxComPortSelectorTerminal4.Items.Add(port);
-                ComboBoxComPortSelectorTerminal5.Items.Add(port);
-            }
-            ComboBoxBaudRateTerminal1.Items.Add("9600");
-            ComboBoxBaudRateTerminal1.Items.Add("19200");
-            ComboBoxBaudRateTerminal1.Items.Add("38400");
-            ComboBoxBaudRateTerminal1.Items.Add("57600");
-            ComboBoxBaudRateTerminal1.Items.Add("115200");
+            ConnectButtonTerminal1.Visibility = Visibility.Hidden;
+            ConnectButtonTerminal2.Visibility = Visibility.Hidden;
+            ConnectButtonTerminal3.Visibility = Visibility.Hidden;
+            ConnectButtonTerminal4.Visibility = Visibility.Hidden;
+            ConnectButtonTerminal5.Visibility = Visibility.Hidden;
+            ConnectButtonTerminal6.Visibility = Visibility.Hidden;
 
-            ComboBoxBaudRateTerminal2.Items.Add("9600");
-            ComboBoxBaudRateTerminal2.Items.Add("19200");
-            ComboBoxBaudRateTerminal2.Items.Add("38400");
-            ComboBoxBaudRateTerminal2.Items.Add("57600");
-            ComboBoxBaudRateTerminal2.Items.Add("115200");
+            StateTextBlockTerminal1.Visibility = Visibility.Hidden;
+            StateTextBlockTerminal2.Visibility = Visibility.Hidden;
+            StateTextBlockTerminal3.Visibility = Visibility.Hidden;
+            StateTextBlockTerminal4.Visibility = Visibility.Hidden;
+            StateTextBlockTerminal5.Visibility = Visibility.Hidden;
+            StateTextBlockTerminal6.Visibility = Visibility.Hidden;
 
-            ComboBoxBaudRateTerminal3.Items.Add("9600");
-            ComboBoxBaudRateTerminal3.Items.Add("19200");
-            ComboBoxBaudRateTerminal3.Items.Add("38400");
-            ComboBoxBaudRateTerminal3.Items.Add("57600");
-            ComboBoxBaudRateTerminal3.Items.Add("115200");
+            TextBoxTerminal1.Visibility = Visibility.Hidden;
+            TextBoxTerminal2.Visibility = Visibility.Hidden;
+            TextBoxTerminal3.Visibility = Visibility.Hidden;
+            TextBoxTerminal4.Visibility = Visibility.Hidden;
+            TextBoxTerminal5.Visibility = Visibility.Hidden;
+            TextBoxTerminal6.Visibility = Visibility.Hidden;
 
-            ComboBoxBaudRateTerminal4.Items.Add("9600");
-            ComboBoxBaudRateTerminal4.Items.Add("19200");
-            ComboBoxBaudRateTerminal4.Items.Add("38400");
-            ComboBoxBaudRateTerminal4.Items.Add("57600");
-            ComboBoxBaudRateTerminal4.Items.Add("115200");
+            ComboBoxBaudRateTerminal1.Visibility = Visibility.Hidden;
+            ComboBoxBaudRateTerminal2.Visibility = Visibility.Hidden;
+            ComboBoxBaudRateTerminal3.Visibility = Visibility.Hidden;
+            ComboBoxBaudRateTerminal4.Visibility = Visibility.Hidden;
+            ComboBoxBaudRateTerminal5.Visibility = Visibility.Hidden;
+            ComboBoxBaudRateTerminal6.Visibility = Visibility.Hidden;
 
-            ComboBoxBaudRateTerminal5.Items.Add("9600");
-            ComboBoxBaudRateTerminal5.Items.Add("19200");
-            ComboBoxBaudRateTerminal5.Items.Add("38400");
-            ComboBoxBaudRateTerminal5.Items.Add("57600");
-            ComboBoxBaudRateTerminal5.Items.Add("115200");
+            ComboBoxComPortSelectorTerminal1.Visibility = Visibility.Hidden;
+            ComboBoxComPortSelectorTerminal2.Visibility = Visibility.Hidden;
+            ComboBoxComPortSelectorTerminal3.Visibility = Visibility.Hidden;
+            ComboBoxComPortSelectorTerminal4.Visibility = Visibility.Hidden;
+            ComboBoxComPortSelectorTerminal5.Visibility = Visibility.Hidden;
+            ComboBoxComPortSelectorTerminal6.Visibility = Visibility.Hidden;
 
+            this.SizeChanged += UpdateTerminalSizes;
+            this.StateChanged += UpdateTerminalSizes;
+            
 
         }
 
-        private void ConnectToSerialPort(Button button_)
+
+        private void UpdateTerminalSizes(object sender, EventArgs e)
         {
-          
+            UpdateTerminalSizes();
+        }
+        private void UpdateTerminalSizes()
+        {
+            //The Height it´s the same for all
+            TextBoxTerminal1.Height = this.Height - TextBoxTerminal1.Margin.Top - 100;
+            TextBoxTerminal2.Height = this.Height - TextBoxTerminal2.Margin.Top - 100;
+            TextBoxTerminal3.Height = this.Height - TextBoxTerminal1.Margin.Top - 100;
+            TextBoxTerminal4.Height = this.Height - TextBoxTerminal2.Margin.Top - 100;
+            TextBoxTerminal5.Height = this.Height - TextBoxTerminal1.Margin.Top - 100;
+            TextBoxTerminal6.Height = this.Height - TextBoxTerminal2.Margin.Top - 100;
 
-            switch(button_.Name)
+            if (terminals.Count == 1)
             {
-                case "ConnectButtonTerminal1":
-                    {
-                       
-                        inicialize_Serialport(ref terminal1,
-                            ComboBoxBaudRateTerminal1,
-                            ComboBoxComPortSelectorTerminal1,
-                            button_,
-                            StateTextBlockTerminal1);
-                        break;
-                    }
-                case "ConnectButtonTerminal2":
-                    {
 
-                        inicialize_Serialport(ref terminal2,
-                            ComboBoxBaudRateTerminal2,
-                            ComboBoxComPortSelectorTerminal2,
-                            button_,
-                            StateTextBlockTerminal2);
-                        break;
-                    }
-                case "ConnectButtonTerminal3":
-                    {
 
-                        inicialize_Serialport(ref terminal3,
-                            ComboBoxBaudRateTerminal3,
-                            ComboBoxComPortSelectorTerminal3,
-                            button_,
-                            StateTextBlockTerminal3);
-                        break;
-                    }
-                case "ConnectButtonTerminal4":
-                    {
 
-                        inicialize_Serialport(ref terminal4,
-                            ComboBoxBaudRateTerminal4,
-                            ComboBoxComPortSelectorTerminal4,
-                            button_,
-                            StateTextBlockTerminal4);
-                        break;
-                    }
-                case "ConnectButtonTerminal5":
-                    {
 
-                        inicialize_Serialport(ref terminal5,
-                            ComboBoxBaudRateTerminal5,
-                            ComboBoxComPortSelectorTerminal5,
-                            button_,
-                            StateTextBlockTerminal5);
-                        break;
-                    }
-                default:
-                    {
-                        return;
-                    }
+
+
+                TextBoxTerminal1.Width = this.Width - 20;
             }
 
-            void inicialize_Serialport(ref SerialPort terminal,
-                ComboBox ComboBoxBaudRateTerminal,
-                ComboBox ComboBoxComPortSelectorTerminal,
-                Button ConnectButtonTerminal,TextBlock StateTextBlockTerminal)
+            if (terminals.Count == 2)
             {
-                if (terminal is null) terminal = new SerialPort();
-                if (terminal.IsOpen == false)
-                {
 
 
-                    string baudRateStringForm = (string)ComboBoxBaudRateTerminal.SelectedValue;
-                    bool correctlyParsed = int.TryParse(baudRateStringForm, out int baudRate);
-                    if (correctlyParsed == false)
-                    {
-                       StateTextBlockTerminal.Text = "Invalid BaudRate";
-                        return;
-                    }
-                    else
-                    {
-                        try
-                        {
+                TextBoxTerminal1.Width = (this.Width / 2) - 20;
 
-                            terminal.BaudRate = baudRate;
-                            terminal.PortName = ComboBoxComPortSelectorTerminal.Text;
-                
-                          
-                            terminal.Open();
-                            StateTextBlockTerminal.Text = "Connected \n" + terminal.PortName;
-                            ConnectButtonTerminal.Content = "Disconnect";
 
-                            terminal.DataReceived += new SerialDataReceivedEventHandler(TerminalDataReceived);
-                        }
-                        catch (UnauthorizedAccessException)
-                        {
+                Thickness thickness = TextBoxTerminal2.Margin;
+                thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
+                TextBoxTerminal2.Margin = thickness;
+                TextBoxTerminal2.Width = (this.Width / 2) - 20;
 
-                            StateTextBlockTerminal.Text = "Access not permited";
-                        }
-                        catch(InvalidOperationException e)
-                        {
-                            StateTextBlockTerminal.Text = e.Message;
-                        }
-                        catch(System.IO.IOException)
-                        {
-                            StateTextBlockTerminal.Text = "Port not available";
-                        }
-                        catch(ArgumentNullException)
-                        {
-                            StateTextBlockTerminal.Text = "Choose a port";
-                        }
-                        catch (ArgumentException)
-                        {
-                            StateTextBlockTerminal.Text = "Choose a port";
-                        }
+            }
+            if (terminals.Count == 3)
+            {
 
-                    }
-                }
-                else
-                {
-                    terminal.Close();
-                    ConnectButtonTerminal.Content = "Connect";
-                    StateTextBlockTerminal.Text = "Disconnected";
-                }
+                TextBoxTerminal1.Width = (this.Width / 3) - 20;
+
+
+                Thickness thickness = TextBoxTerminal2.Margin;
+                thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
+                TextBoxTerminal2.Margin = thickness;
+                TextBoxTerminal2.Width = (this.Width / 3) - 20;
+
+
+                thickness = TextBoxTerminal3.Margin;
+                thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
+                TextBoxTerminal3.Margin = thickness;
+                TextBoxTerminal3.Width = (this.Width / 3) - 20;
+            }
+
+            if (terminals.Count == 4)
+            {
+                TextBoxTerminal1.Width = (this.Width / 4) - 20;
+
+
+                Thickness thickness = TextBoxTerminal2.Margin;
+                thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
+                TextBoxTerminal2.Margin = thickness;
+                TextBoxTerminal2.Width = (this.Width / 4) - 20;
+
+
+                thickness = TextBoxTerminal3.Margin;
+                thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
+                TextBoxTerminal3.Margin = thickness;
+                TextBoxTerminal3.Width = (this.Width / 4) - 20;
+
+                thickness = TextBoxTerminal4.Margin;
+                thickness.Left = TextBoxTerminal3.Margin.Left + TextBoxTerminal3.Width + 10;
+                TextBoxTerminal4.Margin = thickness;
+                TextBoxTerminal4.Width = (this.Width / 4) - 20;
+            }
+
+            if (terminals.Count == 5)
+            {
+                TextBoxTerminal1.Width = (this.Width / 5) - 20;
+
+
+                Thickness thickness = TextBoxTerminal2.Margin;
+                thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
+                TextBoxTerminal2.Margin = thickness;
+                TextBoxTerminal2.Width = (this.Width / 5) - 20;
+
+
+                thickness = TextBoxTerminal3.Margin;
+                thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
+                TextBoxTerminal3.Margin = thickness;
+                TextBoxTerminal3.Width = (this.Width / 5) - 20;
+
+                thickness = TextBoxTerminal4.Margin;
+                thickness.Left = TextBoxTerminal3.Margin.Left + TextBoxTerminal3.Width + 10;
+                TextBoxTerminal4.Margin = thickness;
+                TextBoxTerminal4.Width = (this.Width / 5) - 20;
+
+
+                thickness = TextBoxTerminal5.Margin;
+                thickness.Left = TextBoxTerminal4.Margin.Left + TextBoxTerminal4.Width + 10;
+                TextBoxTerminal5.Margin = thickness;
+                TextBoxTerminal5.Width = (this.Width / 5) - 20;
+            }
+            if (terminals.Count == 6)
+            {
+                TextBoxTerminal1.Width = (this.Width / 6) - 20;
+
+
+                Thickness thickness = TextBoxTerminal2.Margin;
+                thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
+                TextBoxTerminal2.Margin = thickness;
+                TextBoxTerminal2.Width = (this.Width / 6) - 20;
+
+
+                thickness = TextBoxTerminal3.Margin;
+                thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
+                TextBoxTerminal3.Margin = thickness;
+                TextBoxTerminal3.Width = (this.Width / 6) - 20;
+
+                thickness = TextBoxTerminal4.Margin;
+                thickness.Left = TextBoxTerminal3.Margin.Left + TextBoxTerminal3.Width + 10;
+                TextBoxTerminal4.Margin = thickness;
+                TextBoxTerminal4.Width = (this.Width / 6) - 20;
+
+
+                thickness = TextBoxTerminal5.Margin;
+                thickness.Left = TextBoxTerminal4.Margin.Left + TextBoxTerminal4.Width + 10;
+                TextBoxTerminal5.Margin = thickness;
+                TextBoxTerminal5.Width = (this.Width / 6) - 20;
+
+                thickness = TextBoxTerminal6.Margin;
+                thickness.Left = TextBoxTerminal5.Margin.Left + TextBoxTerminal5.Width + 10;
+                TextBoxTerminal6.Margin = thickness;
+                TextBoxTerminal6.Width = (this.Width / 6) - 20;
             }
         }
-
-
-        private void ConnectButtonTerminal_Click(object sender, RoutedEventArgs e)
+        private void UpdateTerminalSizes(object sender, SizeChangedEventArgs e)
         {
-            ConnectToSerialPort((Button)sender);
-        }
-        private void TerminalDataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            SerialPort port =(SerialPort) sender;
-
-          string dataFromPort =  port.ReadExisting();
-           string dataFromPortUTF16 = Convert.ToString(dataFromPort);
-           
-            this.Dispatcher.Invoke(() =>
-            {
-                TextBoxTerminal1.AppendText(dataFromPortUTF16);
-               
-            });
+            UpdateTerminalSizes();
         }
 
-        private void TextBoxTerminal_KeyEvent(object sender, KeyEventArgs e)
+        private void AddTerminalButtonClick(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Back || e.Key == Key.Delete ||e.Key == Key.CapsLock || e.Key == Key.NumLock)
+            if(terminals.Count == 0)
             {
-                e.Handled = true;
+                terminals.Add(new SerialTerminal(ConnectButtonTerminal1, StateTextBlockTerminal1, TextBoxTerminal1, ComboBoxBaudRateTerminal1, ComboBoxComPortSelectorTerminal1));
+                UpdateTerminalSizes();
+
+                TextBoxTerminal1.Visibility = Visibility.Visible;
+
+                ConnectButtonTerminal1.Visibility = Visibility.Visible;
+
+                StateTextBlockTerminal1.Visibility = Visibility.Visible;
+
+                TextBoxTerminal1.Visibility = Visibility.Visible;
+
+                ComboBoxBaudRateTerminal1.Visibility = Visibility.Visible;
+
+                ComboBoxComPortSelectorTerminal1.Visibility = Visibility.Visible;
+
+                return;
+
+            }
+            if (terminals.Count == 1)
+            {
+                terminals.Add(new SerialTerminal(ConnectButtonTerminal2, StateTextBlockTerminal2, TextBoxTerminal2, ComboBoxBaudRateTerminal2, ComboBoxComPortSelectorTerminal2));
+                UpdateTerminalSizes();
+
+                TextBoxTerminal2.Visibility = Visibility.Visible;
+
+                ConnectButtonTerminal2.Visibility = Visibility.Visible;
+
+                StateTextBlockTerminal2.Visibility = Visibility.Visible;
+
+                TextBoxTerminal2.Visibility = Visibility.Visible;
+
+                ComboBoxBaudRateTerminal2.Visibility = Visibility.Visible;
+
+                ComboBoxComPortSelectorTerminal2.Visibility = Visibility.Visible;
+
+                return;
+
+            }
+            if (terminals.Count == 2)
+            {
+
+                terminals.Add(new SerialTerminal(ConnectButtonTerminal3, StateTextBlockTerminal3, TextBoxTerminal3, ComboBoxBaudRateTerminal3, ComboBoxComPortSelectorTerminal3));
+                UpdateTerminalSizes();
+
+                TextBoxTerminal3.Visibility = Visibility.Visible;
+
+                ConnectButtonTerminal3.Visibility = Visibility.Visible;
+
+                StateTextBlockTerminal3.Visibility = Visibility.Visible;
+
+                TextBoxTerminal3.Visibility = Visibility.Visible;
+
+                ComboBoxBaudRateTerminal3.Visibility = Visibility.Visible;
+
+                ComboBoxComPortSelectorTerminal3.Visibility = Visibility.Visible;
+
                 return;
             }
-
-         
-
-
-            TextBox text = (TextBox)sender; 
-
-           switch (text.Name)
+            if (terminals.Count == 3)
             {
-                case "TextBoxTerminal1":
-                    {
-                       if(!(terminal1 is null) && terminal1.IsOpen == true)
-                        {
-                            if (Keyboard.IsKeyToggled(Key.CapsLock))
-                            {
-                                terminal1.Write(e.Key.ToString());
-                            }
-                            else
-                            {
-                                terminal1.Write(e.Key.ToString().ToLower());
-                            }
-                        }
-                       else
-                        {
-                            e.Handled = true;
-                        }
-                        break;
-                    }
-                case "TextBoxTerminal2":
-                    {
-                        if (!(terminal2 is null) && terminal2.IsOpen == true)
-                        {
-                            if (Keyboard.IsKeyToggled(Key.CapsLock))
-                            {
-                                terminal2.Write(e.Key.ToString());
-                            }
-                            else
-                            {
-                                terminal2.Write(e.Key.ToString().ToLower());
-                            }
-                        }
-                        else
-                        {
-                            e.Handled = true;
-                        }
-                        break;
-                    }
-                case "TextBoxTerminal3":
-                    {
-                        if (!(terminal3 is null) && terminal3.IsOpen == true)
-                        {
-                            if (Keyboard.IsKeyToggled(Key.CapsLock))
-                            {
-                                terminal3.Write(e.Key.ToString());
-                            }
-                            else
-                            {
-                                terminal3.Write(e.Key.ToString().ToLower());
-                            }
-                        }
-                        else
-                        {
-                            e.Handled = true;
-                        }
-                        break;
-                    }
-                case "TextBoxTerminal4":
-                    {
-                        if (!(terminal4 is null) && terminal4.IsOpen == true)
-                        {
-                            if (Keyboard.IsKeyToggled(Key.CapsLock))
-                            {
-                                terminal4.Write(e.Key.ToString());
-                            }
-                            else
-                            {
-                                terminal4.Write(e.Key.ToString().ToLower());
-                            }
-                        }
-                        else
-                        {
-                            e.Handled = true;
-                        }
-                        break;
-                    }
-                case "TextBoxTerminal5":
-                    {
-                        if (!(terminal5 is null) && terminal5.IsOpen == true)
-                        {
-                            if (Keyboard.IsKeyToggled(Key.CapsLock))
-                            {
-                                terminal5.Write(e.Key.ToString());
-                            }
-                            else
-                            {
-                                terminal5.Write(e.Key.ToString().ToLower());
-                            }
-                        }
-                        else
-                        {
-                            e.Handled = true;
-                        }
-                        break;
-                    }
+
+                terminals.Add(new SerialTerminal(ConnectButtonTerminal4, StateTextBlockTerminal4, TextBoxTerminal4, ComboBoxBaudRateTerminal4, ComboBoxComPortSelectorTerminal4));
+                UpdateTerminalSizes();
+
+                TextBoxTerminal4.Visibility = Visibility.Visible;
+
+                ConnectButtonTerminal4.Visibility = Visibility.Visible;
+
+                StateTextBlockTerminal4.Visibility = Visibility.Visible;
+
+                TextBoxTerminal4.Visibility = Visibility.Visible;
+
+                ComboBoxBaudRateTerminal4.Visibility = Visibility.Visible;
+
+                ComboBoxComPortSelectorTerminal4.Visibility = Visibility.Visible;
+
+                return;
             }
-            
+            if (terminals.Count == 4)
+            {
+
+                terminals.Add(new SerialTerminal(ConnectButtonTerminal5, StateTextBlockTerminal5, TextBoxTerminal5, ComboBoxBaudRateTerminal5, ComboBoxComPortSelectorTerminal5));
+                UpdateTerminalSizes();
+                TextBoxTerminal5.Visibility = Visibility.Visible;
+
+                ConnectButtonTerminal5.Visibility = Visibility.Visible;
+
+                StateTextBlockTerminal5.Visibility = Visibility.Visible;
+
+                TextBoxTerminal5.Visibility = Visibility.Visible;
+
+                ComboBoxBaudRateTerminal5.Visibility = Visibility.Visible;
+
+                ComboBoxComPortSelectorTerminal5.Visibility = Visibility.Visible;
+
+                return;
+            }
+            if (terminals.Count == 5)
+            {
+                terminals.Add(new SerialTerminal(ConnectButtonTerminal6, StateTextBlockTerminal6, TextBoxTerminal6, ComboBoxBaudRateTerminal6, ComboBoxComPortSelectorTerminal6));
+                UpdateTerminalSizes();
+
+                TextBoxTerminal6.Visibility = Visibility.Visible;
+
+                ConnectButtonTerminal6.Visibility = Visibility.Visible;
+
+                StateTextBlockTerminal6.Visibility = Visibility.Visible;
+
+                TextBoxTerminal6.Visibility = Visibility.Visible;
+
+                ComboBoxBaudRateTerminal6.Visibility = Visibility.Visible;
+
+                ComboBoxComPortSelectorTerminal6.Visibility = Visibility.Visible;
+
+                return;
+
+            }
+            MessageBox.Show("Max number of terminals is 6", "Why do you need so many terminals?");
+
+
         }
-
-
     }
 }
