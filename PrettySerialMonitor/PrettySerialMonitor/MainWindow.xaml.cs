@@ -97,12 +97,12 @@ namespace PrettySerialMonitor
         private void UpdateTerminalSizes()
         {
             //The Height it´s the same for all
-            TextBoxTerminal1.Height = this.Height - TextBoxTerminal1.Margin.Top - 100;
-            TextBoxTerminal2.Height = this.Height - TextBoxTerminal2.Margin.Top - 100;
-            TextBoxTerminal3.Height = this.Height - TextBoxTerminal1.Margin.Top - 100;
-            TextBoxTerminal4.Height = this.Height - TextBoxTerminal2.Margin.Top - 100;
-            TextBoxTerminal5.Height = this.Height - TextBoxTerminal1.Margin.Top - 100;
-            TextBoxTerminal6.Height = this.Height - TextBoxTerminal2.Margin.Top - 100;
+            TextBoxTerminal1.Height = this.ActualHeight - TextBoxTerminal1.Margin.Top - 100;
+            TextBoxTerminal2.Height = this.ActualHeight - TextBoxTerminal2.Margin.Top - 100;
+            TextBoxTerminal3.Height = this.ActualHeight - TextBoxTerminal1.Margin.Top - 100;
+            TextBoxTerminal4.Height = this.ActualHeight - TextBoxTerminal2.Margin.Top - 100;
+            TextBoxTerminal5.Height = this.ActualHeight - TextBoxTerminal1.Margin.Top - 100;
+            TextBoxTerminal6.Height = this.ActualHeight - TextBoxTerminal2.Margin.Top - 100;
 
             if (terminals.Count == 1)
             {
@@ -112,120 +112,120 @@ namespace PrettySerialMonitor
 
 
 
-                TextBoxTerminal1.Width = this.Width - 20;
+                TextBoxTerminal1.Width = this.ActualWidth - 20;
             }
 
             if (terminals.Count == 2)
             {
 
 
-                TextBoxTerminal1.Width = (this.Width / 2) - 20;
+                TextBoxTerminal1.Width = (this.ActualWidth / 2) - 20;
 
 
                 Thickness thickness = TextBoxTerminal2.Margin;
                 thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
                 TextBoxTerminal2.Margin = thickness;
-                TextBoxTerminal2.Width = (this.Width / 2) - 20;
+                TextBoxTerminal2.Width = (this.ActualWidth / 2) - 20;
 
             }
             if (terminals.Count == 3)
             {
 
-                TextBoxTerminal1.Width = (this.Width / 3) - 20;
+                TextBoxTerminal1.Width = (this.ActualWidth / 3) - 20;
 
 
                 Thickness thickness = TextBoxTerminal2.Margin;
                 thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
                 TextBoxTerminal2.Margin = thickness;
-                TextBoxTerminal2.Width = (this.Width / 3) - 20;
+                TextBoxTerminal2.Width = (this.ActualWidth / 3) - 20;
 
 
                 thickness = TextBoxTerminal3.Margin;
                 thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
                 TextBoxTerminal3.Margin = thickness;
-                TextBoxTerminal3.Width = (this.Width / 3) - 20;
+                TextBoxTerminal3.Width = (this.ActualWidth / 3) - 20;
             }
 
             if (terminals.Count == 4)
             {
-                TextBoxTerminal1.Width = (this.Width / 4) - 20;
+                TextBoxTerminal1.Width = (this.ActualWidth / 4) - 20;
 
 
                 Thickness thickness = TextBoxTerminal2.Margin;
                 thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
                 TextBoxTerminal2.Margin = thickness;
-                TextBoxTerminal2.Width = (this.Width / 4) - 20;
+                TextBoxTerminal2.Width = (this.ActualWidth / 4) - 20;
 
 
                 thickness = TextBoxTerminal3.Margin;
                 thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
                 TextBoxTerminal3.Margin = thickness;
-                TextBoxTerminal3.Width = (this.Width / 4) - 20;
+                TextBoxTerminal3.Width = (this.ActualWidth / 4) - 20;
 
                 thickness = TextBoxTerminal4.Margin;
                 thickness.Left = TextBoxTerminal3.Margin.Left + TextBoxTerminal3.Width + 10;
                 TextBoxTerminal4.Margin = thickness;
-                TextBoxTerminal4.Width = (this.Width / 4) - 20;
+                TextBoxTerminal4.Width = (this.ActualWidth / 4) - 20;
             }
 
             if (terminals.Count == 5)
             {
-                TextBoxTerminal1.Width = (this.Width / 5) - 20;
+                TextBoxTerminal1.Width = (this.ActualWidth / 5) - 20;
 
 
                 Thickness thickness = TextBoxTerminal2.Margin;
                 thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
                 TextBoxTerminal2.Margin = thickness;
-                TextBoxTerminal2.Width = (this.Width / 5) - 20;
+                TextBoxTerminal2.Width = (this.ActualWidth / 5) - 20;
 
 
                 thickness = TextBoxTerminal3.Margin;
                 thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
                 TextBoxTerminal3.Margin = thickness;
-                TextBoxTerminal3.Width = (this.Width / 5) - 20;
+                TextBoxTerminal3.Width = (this.ActualWidth / 5) - 20;
 
                 thickness = TextBoxTerminal4.Margin;
                 thickness.Left = TextBoxTerminal3.Margin.Left + TextBoxTerminal3.Width + 10;
                 TextBoxTerminal4.Margin = thickness;
-                TextBoxTerminal4.Width = (this.Width / 5) - 20;
+                TextBoxTerminal4.Width = (this.ActualWidth / 5) - 20;
 
 
                 thickness = TextBoxTerminal5.Margin;
                 thickness.Left = TextBoxTerminal4.Margin.Left + TextBoxTerminal4.Width + 10;
                 TextBoxTerminal5.Margin = thickness;
-                TextBoxTerminal5.Width = (this.Width / 5) - 20;
+                TextBoxTerminal5.Width = (this.ActualWidth / 5) - 20;
             }
             if (terminals.Count == 6)
             {
-                TextBoxTerminal1.Width = (this.Width / 6) - 20;
+                TextBoxTerminal1.Width = (this.ActualWidth / 6) - 20;
 
 
                 Thickness thickness = TextBoxTerminal2.Margin;
                 thickness.Left = TextBoxTerminal1.Margin.Left + TextBoxTerminal1.Width + 10;
                 TextBoxTerminal2.Margin = thickness;
-                TextBoxTerminal2.Width = (this.Width / 6) - 20;
+                TextBoxTerminal2.Width = (this.ActualWidth / 6) - 20;
 
 
                 thickness = TextBoxTerminal3.Margin;
                 thickness.Left = TextBoxTerminal2.Margin.Left + TextBoxTerminal2.Width + 10;
                 TextBoxTerminal3.Margin = thickness;
-                TextBoxTerminal3.Width = (this.Width / 6) - 20;
+                TextBoxTerminal3.Width = (this.ActualWidth / 6) - 20;
 
                 thickness = TextBoxTerminal4.Margin;
                 thickness.Left = TextBoxTerminal3.Margin.Left + TextBoxTerminal3.Width + 10;
                 TextBoxTerminal4.Margin = thickness;
-                TextBoxTerminal4.Width = (this.Width / 6) - 20;
+                TextBoxTerminal4.Width = (this.ActualWidth / 6) - 20;
 
 
                 thickness = TextBoxTerminal5.Margin;
                 thickness.Left = TextBoxTerminal4.Margin.Left + TextBoxTerminal4.Width + 10;
                 TextBoxTerminal5.Margin = thickness;
-                TextBoxTerminal5.Width = (this.Width / 6) - 20;
+                TextBoxTerminal5.Width = (this.ActualWidth / 6) - 20;
 
                 thickness = TextBoxTerminal6.Margin;
                 thickness.Left = TextBoxTerminal5.Margin.Left + TextBoxTerminal5.Width + 10;
                 TextBoxTerminal6.Margin = thickness;
-                TextBoxTerminal6.Width = (this.Width / 6) - 20;
+                TextBoxTerminal6.Width = (this.ActualWidth / 6) - 20;
             }
         }
         private void UpdateTerminalSizes(object sender, SizeChangedEventArgs e)
@@ -357,6 +357,12 @@ namespace PrettySerialMonitor
             MessageBox.Show("Max number of terminals is 6", "Why do you need so many terminals?");
 
 
+        }
+
+        private void RefreshPortsButtonClick(object sender, RoutedEventArgs e)
+        {
+            foreach (SerialTerminal terminal in terminals)
+                terminal.UpdatePorts();
         }
     }
 }

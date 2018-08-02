@@ -201,6 +201,16 @@ namespace PrettySerialMonitor
             });
         }
 
+        public void UpdatePorts()
+        {
+            selectSerialPortComboBox.Items.Clear();
+            string[] portsList = SerialPort.GetPortNames();
+
+            foreach (string port in portsList)
+            {
+                selectSerialPortComboBox.Items.Add(port);
+            }
+        }
     }
 
 

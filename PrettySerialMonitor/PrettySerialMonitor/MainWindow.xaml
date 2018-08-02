@@ -58,6 +58,8 @@
         <TextBlock  Name="StateTextBlockTerminal6" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="797,89,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="61" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
 
         <Button Click="AddTerminalButtonClick" Content="Add terminal" HorizontalAlignment="Left" Margin="22,18,0,0" VerticalAlignment="Top" Width="78" Height="24"/>
+        <Button Click="RefreshPortsButtonClick" Content="Refresh ports" HorizontalAlignment="Left" Margin="105,18,0,0" VerticalAlignment="Top" Width="78" Height="24"/>
+
     </Grid>
 
 </Window>
