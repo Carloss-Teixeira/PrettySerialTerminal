@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrettySerialMonitor.exe" size="228840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrettySerialMonitor.exe" size="231400">
       <assemblyIdentity name="PrettySerialMonitor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9WmeS7ct9i3N2Mc1mNQ8zGyiiVO1XZkLeJQcye+jWfo=</dsig:DigestValue>
+        <dsig:DigestValue>5KayE1qeXnTK8yvH/RIv7b9f6qQ63/AFC6jB+0qyzuo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

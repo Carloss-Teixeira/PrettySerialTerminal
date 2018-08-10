@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:PrettySerialMonitor"
 
         mc:Ignorable="d"
-        Title="Pretty Serial Monitor" Height="749" Width="1000"
+        Title="Pretty Serial Monitor" Height="693" Width="1000"
         MinWidth="500"
         MinHeight="500"
           >
@@ -23,25 +23,26 @@
 
 
 
-    <Grid Margin="0,0,0,0">
-
-        <ComboBox Focusable="False" Name="ComboBoxComPortSelectorTerminal" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2"   />
+    <Grid Height="687" VerticalAlignment="Top">
 
 
-        <Button Focusable="False" Name="ConnectButtonTerminal" Content="Connect" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2"/>
+        <ComboBox Focusable="False" Name="ComboBoxComPortSelectorTerminal" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Width="152"   />
 
 
-        <TextBox  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"  Name="TextBoxTerminal"  HorizontalAlignment="Left" Margin="10,278,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Height="346" Width="972" RenderTransformOrigin="0.461,0.505"/>
+        <Button Focusable="False" Name="ConnectButtonTerminal" Content="Connect" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Width="152"/>
 
 
-        <ComboBox   Name="ComboBoxBaudRateTerminal" IsEditable="True" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2"/>
+        <RichTextBox  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"  Name="TextBoxTerminal"  HorizontalAlignment="Left" Margin="10,184,0,0"  VerticalAlignment="Top" Height="440" Width="972" RenderTransformOrigin="0.461,0.505"/>
 
-        <TextBlock  Name="StateTextBlockTerminal" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="10,89,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="61" FontFamily="Arial" FontSize="14" TextAlignment="Center" Grid.ColumnSpan="2"/>
-        <Button  Focusable="False" Click="RefreshPortsButtonClick" Content="Refresh ports" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="116" Height="24"/>
 
-        <TextBox Name="TerminalSendTextBox"  HorizontalAlignment="Left" Height="23" Margin="10,629,0,0"  TextWrapping="Wrap"   VerticalAlignment="Top" Width="947"/>
+        <ComboBox   Name="ComboBoxBaudRateTerminal" IsEditable="True" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="152"/>
 
-        <Button  Name="TerminalSendButton" HorizontalAlignment="Left" Margin="962,629,0,0" VerticalAlignment="Top" Width="20" Height="26">
+        <TextBlock  Name="StateTextBlockTerminal" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="10,19,0,0" TextWrapping="Wrap" Text="Disconnected" VerticalAlignment="Top" Width="152" Height="61" FontFamily="Arial" FontSize="14" TextAlignment="Center"/>
+        <Button  Focusable="False" Click="RefreshPortsButtonClick" Content="Refresh ports" HorizontalAlignment="Left" Margin="167,112,0,0" VerticalAlignment="Top" Width="119" Height="24"/>
+
+        <TextBox TextWrapping="NoWrap" Name="TerminalSendTextBox"  HorizontalAlignment="Left" Height="23" Margin="10,629,0,0"    VerticalAlignment="Top" Width="947" Grid.ColumnSpan="3"/>
+
+        <Button Focusable="False" Name="TerminalSendButton" HorizontalAlignment="Left" Margin="483,629,0,0" VerticalAlignment="Top" Width="20" Height="26" Grid.Column="2">
             <Image Source="resources/sendicon.png" Height="10" Width="10" >
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -53,7 +54,9 @@
                 </Image.RenderTransform>
             </Image>
         </Button>
-        <CheckBox Foreground="WhiteSmoke" IsChecked="True" Content="AutoScroll" HorizontalAlignment="Left" Margin="156,10,0,0" VerticalAlignment="Top" Height="25" Click="AutoScrollCheckBox_Checked"/>
+        <CheckBox Foreground="WhiteSmoke" IsChecked="True" Content="AutoScroll" HorizontalAlignment="Left" Margin="291,112,0,0" VerticalAlignment="Top" Height="27" Checked="AutoScrollCheckBox_Checked" Unchecked="AutoScrollCheckBox_Checked" Width="108" />
+        <CheckBox Foreground="WhiteSmoke" IsChecked="False" Content="Show senders" HorizontalAlignment="Left" Margin="291,141,0,0" VerticalAlignment="Top" Height="27" Width="108" Unchecked="ShowSendersCheckBox_Checked" Checked="ShowSendersCheckBox_Checked"/>
+        <Button Focusable="False" Content="Clear" HorizontalAlignment="Left" Margin="167,142,0,0" VerticalAlignment="Top" Width="119" Click="ClearButton_Click"/>
 
     </Grid>
 

@@ -42,32 +42,21 @@ namespace PrettySerialMonitor
 
         public MainWindow()
         {
-            
-            
 
             InitializeComponent();
-           
 
+
+            
+        
 //////Inicializing array that contains the UI elements for all terminals,to make it easier to change the positions
             uIElementsTerminals = new FrameworkElement[ 7];
 
-
             uIElementsTerminals[ 0] = ComboBoxBaudRateTerminal;
-           
-            uIElementsTerminals[ 1] = ComboBoxComPortSelectorTerminal;
-         
-            uIElementsTerminals[ 2] = StateTextBlockTerminal;
-    
-            uIElementsTerminals[ 3] = ConnectButtonTerminal;
-    
-
-            uIElementsTerminals[ 4] = TextBoxTerminal;
-        
-
-
+            uIElementsTerminals[ 1] = ComboBoxComPortSelectorTerminal;        
+            uIElementsTerminals[ 2] = StateTextBlockTerminal;    
+            uIElementsTerminals[ 3] = ConnectButtonTerminal;    
+            uIElementsTerminals[ 4] = TextBoxTerminal;        
             uIElementsTerminals[ 5] = TerminalSendTextBox;
-           
-
             uIElementsTerminals[ 6] = TerminalSendButton;
             
             ////////////////////////////////////////////////////////////////////////////////////////////
@@ -187,7 +176,19 @@ namespace PrettySerialMonitor
         private void AutoScrollCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox box = (CheckBox)sender;
-            terminal.AutoScroll =(bool) box.IsChecked;
+           if(!(terminal is null)) terminal.AutoScroll =(bool) box.IsChecked;
+        }
+
+        private void ShowSendersCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox box = (CheckBox)sender;
+            if (!(terminal is null)) terminal.UpdateShowSenders((bool)box.IsChecked);
+
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(!(terminal is null))terminal.ClearTerminalText();
         }
     }
 }

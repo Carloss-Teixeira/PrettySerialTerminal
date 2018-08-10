@@ -7,6 +7,7 @@ using System.IO.Ports;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 namespace PrettySerialMonitor
 {
     enum TerminalModes
@@ -21,13 +22,31 @@ namespace PrettySerialMonitor
     {
 
 
-        public bool AutoScroll { get; set; } = true;
+        struct SerialText
+        {
+           public string Sender { get; }
+           public string Message { get; }
 
+            public SerialText(string sender,string message)
+            {
+                this.Sender = sender;
+                this.Message = message;
+            }
+        }
+
+
+   
+       
+        public bool AutoScroll { get; set; } = true;
+        public bool ShowSenders { get; set; } = false;
+
+        List<SerialText> SerialMessages = new List<SerialText>(250);
+     
       
         SerialPort port;
         Button connectDisconnectButton;
         TextBlock statusTextBlock;
-        TextBox inputOutputTextBox;
+        RichTextBox inputOutputTextBox;
         ComboBox baudRateComboBox;
         ComboBox selectSerialPortComboBox;
         TextBox sendTextTextBox;
@@ -46,16 +65,8 @@ namespace PrettySerialMonitor
         /// <param name="selectSerialPortcomboBox"></param>
         /// <param name="sendTextTextBox"></param>
         /// <param name="sendButton"></param>
-        public SerialTerminal(Button connectDisconnectButton,
-            TextBlock statusTextBlock,
-            TextBox inputOutputTextBox,
-            ComboBox baudRateComboBox,
-            ComboBox selectSerialPortcomboBox,
-            TextBox sendTextTextBox,
-            Button sendButton)
+        public SerialTerminal(Button connectDisconnectButton, TextBlock statusTextBlock, RichTextBox inputOutputTextBox, ComboBox baudRateComboBox, ComboBox selectSerialPortcomboBox, TextBox sendTextTextBox, Button sendButton)
         {
-
-
 
 
 
@@ -107,24 +118,19 @@ namespace PrettySerialMonitor
             port.DataReceived += TerminalDataReceived;
 
         }
-
         /// <summary>
         /// Sends data thought the serial port and show the data on the input output textBox
         /// </summary>
         /// <param name="data"></param>
         private void WriteToTerminal(string data)
         {
+            SerialMessages.Add(new SerialText("Computer", data));
+            WriteToTextBox(new SerialText("Computer", data));
             port.Write(data);
-            inputOutputTextBox.AppendText(data);
+            
 
-            if (AutoScroll)
-            {
-                inputOutputTextBox.ScrollToEnd();
-                inputOutputTextBox.CaretIndex = inputOutputTextBox.Text.Length;
-            }
+
         }
-
-
         /// <summary>
         /// Locks the selecion boxes
         /// </summary>
@@ -162,7 +168,6 @@ namespace PrettySerialMonitor
            else return false;
 
         }
-
         private void SendButtonClick(object sender, RoutedEventArgs e)
         {
             if(IsConnected())
@@ -171,17 +176,14 @@ namespace PrettySerialMonitor
                 {
                     string data = sendTextTextBox.Text;
                     sendTextTextBox.Clear();
+                    WriteToTerminal(data);
+
 
                 }
             }
 
 
-            //Ler a send text box e virificar se a porta está aberta
-            //apagar
-            //e mandar os dados
-            throw new NotImplementedException();
         }
-
         /// <summary>
         /// 
         /// when the user presses a key while in focus of the textbox,if the port is open
@@ -206,8 +208,7 @@ namespace PrettySerialMonitor
                 //not to write "Return" on the text box
                 if (e.Key == Key.Return)
                 {
-                    port.Write("\n");
-                    inputOutputTextBox.AppendText("\n");
+                    WriteToTerminal("\n");
 
                 }
                 else if (Keyboard.IsKeyToggled(Key.CapsLock))
@@ -223,8 +224,7 @@ namespace PrettySerialMonitor
 
                 }
                 e.Handled = true;
-                inputOutputTextBox.ScrollToEnd();
-                inputOutputTextBox.CaretIndex = inputOutputTextBox.Text.Length;
+
             }
             else
             {
@@ -238,8 +238,6 @@ namespace PrettySerialMonitor
 
 
         }
-
-
         private void ConnectDisconnectButtonClick(object sender , RoutedEventArgs e)
         {
            
@@ -266,6 +264,7 @@ namespace PrettySerialMonitor
                     port.BaudRate = baudRate;
 
                     port.Open();
+                    
                     this.portConnected = true;
                 }
                 catch (Exception exc)
@@ -287,7 +286,6 @@ namespace PrettySerialMonitor
                 UnlockUi();
             }
         }
-
         /// <summary>
         /// receives data trought the serial port and write the data on the text box
         /// </summary>
@@ -296,21 +294,22 @@ namespace PrettySerialMonitor
         private void TerminalDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
-
-            string dataFromPort = port.ReadExisting();
+            String dataFromPort = port.ReadExisting();
+            
+     
+            
             string dataFromPortUTF16 = Convert.ToString(dataFromPort);
 
-                inputOutputTextBox.Dispatcher.Invoke(() =>
+            SerialMessages.Add(new SerialText("Device", dataFromPortUTF16));
+
+
+            inputOutputTextBox.Dispatcher.Invoke(() =>
                 {
-                    inputOutputTextBox.AppendText(dataFromPortUTF16);
-                    if (AutoScroll)
-                    {
-                        inputOutputTextBox.ScrollToEnd();
-                    }
+                    WriteToTextBox(new SerialText("Device", dataFromPortUTF16));
+
                 });
             
         }
-
         public void UpdatePorts()
         {
             if (!IsConnected())
@@ -324,7 +323,63 @@ namespace PrettySerialMonitor
                 }
             }
         }
+        private void WriteToTextBox(SerialText data)
+        {
+
+            if (inputOutputTextBox.Document.Blocks.Count == 0) inputOutputTextBox.Document.Blocks.Add(new Paragraph() { LineHeight = 1, });
+            
+            Paragraph paragraph = (Paragraph)inputOutputTextBox.Document.Blocks.Last();
+
+            if (ShowSenders && (paragraph.Inlines.Count == 0 || SerialMessages[SerialMessages.Count - 2].Sender != data.Sender)) 
+            {
+
+
+
+
+                if (paragraph.Inlines.Count > 0 ) paragraph.Inlines.Add(new Run("\n"));
+                   
+
+                paragraph.Inlines.Add(new Bold(new Run(data.Sender + "->")));
+
+               
+                
+            }
+            
+            
+            paragraph.Inlines.Add(new Run(data.Message));
+
+            if (AutoScroll)
+            {
+                inputOutputTextBox.ScrollToEnd();
+                inputOutputTextBox.CaretPosition = inputOutputTextBox.CaretPosition.DocumentEnd;
+            }
+        
+        }
+
+        public void UpdateShowSenders(bool showSenders)
+        {
+            this.ShowSenders = showSenders;
+
+            //rewrites everyting with or without the senders name
+                inputOutputTextBox.Document.Blocks.Clear();
+
+            List<SerialText> temporaryList = new List<SerialText>(SerialMessages);
+            SerialMessages.Clear();
+                foreach(SerialText text in temporaryList)
+                {
+                    SerialMessages.Add(text);
+                    WriteToTextBox(text);
+                }
+            
+        }
+        public void ClearTerminalText()
+        {
+            inputOutputTextBox.Document.Blocks.Clear();
+            SerialMessages.Clear();
+        }
+        
     }
 
+    
 
 }
