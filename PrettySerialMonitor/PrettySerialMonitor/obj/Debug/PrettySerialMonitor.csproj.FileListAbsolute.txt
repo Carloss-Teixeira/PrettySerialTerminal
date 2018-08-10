@@ -28,3 +28,16 @@ C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySeri
 C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.csproj.CoreCompileInputs.cache
 C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.exe
 C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.pdb
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.csproj.CopyComplete
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\ControlzEx.dll
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\MahApps.Metro.dll
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\ControlzEx.pdb
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\MahApps.Metro.pdb
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\MahApps.Metro.xml
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\App.baml
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\PrettySerialMonitor.exe.manifest
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\bin\Debug\PrettySerialMonitor.application
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.TrustInfo.xml
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.exe.manifest
+C:\Users\Carlos\Source\Repos\PrettySerialTerminal\PrettySerialMonitor\PrettySerialMonitor\obj\Debug\PrettySerialMonitor.application
