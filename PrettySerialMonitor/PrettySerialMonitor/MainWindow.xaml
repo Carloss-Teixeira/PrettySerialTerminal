@@ -57,6 +57,7 @@
         <CheckBox Foreground="WhiteSmoke" IsChecked="True" Content="AutoScroll" HorizontalAlignment="Left" Margin="291,112,0,0" VerticalAlignment="Top" Height="27" Checked="AutoScrollCheckBox_Checked" Unchecked="AutoScrollCheckBox_Checked" Width="108" />
         <CheckBox Foreground="WhiteSmoke" IsChecked="False" Content="Show senders" HorizontalAlignment="Left" Margin="291,141,0,0" VerticalAlignment="Top" Height="27" Width="108" Unchecked="ShowSendersCheckBox_Checked" Checked="ShowSendersCheckBox_Checked"/>
         <Button Focusable="False" Content="Clear" HorizontalAlignment="Left" Margin="167,142,0,0" VerticalAlignment="Top" Width="119" Click="ClearButton_Click"/>
+        <Button Focusable="False" Content="Save data" HorizontalAlignment="Left" Margin="167,77,0,0" VerticalAlignment="Top" Width="119" Click="SaveDataButton_Click"/>
 
     </Grid>
 

@@ -190,5 +190,20 @@ namespace PrettySerialMonitor
         {
             if(!(terminal is null))terminal.ClearTerminalText();
         }
+
+        private void SaveDataButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            terminal.SaveData(System.IO.Directory.GetCurrentDirectory(), "TESTE321.txt", Encoding.UTF8, new string[2] { "Computer", "Device" }, true,true);           
+            if(!(terminal is null))
+                {
+                SaveDataWindow window = new SaveDataWindow(terminal);
+                window.Show();
+            }
+
+          
+           
+
+        }
     }
 }

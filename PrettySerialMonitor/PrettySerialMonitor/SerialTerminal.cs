@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.IO;
+
+
 namespace PrettySerialMonitor
 {
     enum TerminalModes
@@ -18,7 +20,7 @@ namespace PrettySerialMonitor
 
     }
 
-    class SerialTerminal
+  public  class SerialTerminal
     {
 
 
@@ -370,16 +372,62 @@ namespace PrettySerialMonitor
                     SerialMessages.Add(text);
                     WriteToTextBox(text);
                 }
-            
+
+          
         }
         public void ClearTerminalText()
         {
             inputOutputTextBox.Document.Blocks.Clear();
             SerialMessages.Clear();
         }
+
+        public void SaveData(String directory, String fileName, Encoding encoding,List<String> validSenders,bool showSenders,bool allMessagesNewLineSeparated)
+        {
+            if (String.IsNullOrEmpty(directory))
+            {
+                throw new ArgumentException("No directory", nameof(directory));
+            }
+            if (encoding == null)
+            {
+                throw new ArgumentNullException("Enconding not valid",nameof(encoding));
+            }
+            if(!Directory.Exists(directory)) throw new ArgumentException("Invalid directory", nameof(directory));
+            var fileStream = File.Create((directory +"/"+ fileName));
+            List<SerialText> MessagesToSave = new List<SerialText>(SerialMessages.Count);
+            foreach (SerialText data in SerialMessages)
+            {
+                if (validSenders.Contains(data.Sender)) MessagesToSave.Add(data);
+               
+            }
+            
+
+           if (showSenders)
+            {
+                foreach (SerialText data in MessagesToSave)
+                {
+                    fileStream.Write(encoding.GetBytes((data.Sender+"->")), 0, encoding.GetByteCount((data.Sender + "->")));
+                    fileStream.Write(encoding.GetBytes(data.Message), 0, encoding.GetByteCount(data.Message));
+                    if(allMessagesNewLineSeparated) fileStream.Write(encoding.GetBytes("\n"), 0, encoding.GetByteCount("\n"));
+                }
+
+            }
+       
+            else
+            {
+                foreach (SerialText data in MessagesToSave)
+                {
+
+                    fileStream.Write(encoding.GetBytes(data.Message), 0, encoding.GetByteCount(data.Message));
+                    if (allMessagesNewLineSeparated) fileStream.Write(encoding.GetBytes("\n"), 0, encoding.GetByteCount("\n"));
+                }
+            }
+           
+        }
+
         
     }
 
-    
+
+
 
 }
