@@ -1,3 +1,3 @@
 # PrettySerialTerminal
 Just a not so ugly serial terminal
-![alt text](https://imgur.com/a/P3n7Pto)
+!(https://i.imgur.com/O8mnFC1.png)
