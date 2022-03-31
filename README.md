@@ -1,3 +1,5 @@
 # PrettySerialTerminal
-Just a not so ugly serial terminal
-!(https://i.imgur.com/O8mnFC1.png)
+Tired of serial terminals that look like they came from windows 98?
+
+
+![alt text](https://i.imgur.com/O8mnFC1.png)
